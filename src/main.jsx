@@ -63,6 +63,32 @@ const router = createBrowserRouter(
     )
 );
 
+// Playing with Router
+const router2 = createBrowserRouter(
+    createRoutesFromElements(
+        <Route>
+            <Route path="/" element={<Layout />}>
+                <Route index element={<Home />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/user/:userid" element={<User />} />
+            </Route>
+            <Route
+                loader={githubInfoLoader} // it is for optimisation purpose
+                path="/github"
+                element={<Github />}
+            />
+            <Route
+                path="/about"
+                element={
+                    <HeaderOnlyLayout>
+                        <About />
+                    </HeaderOnlyLayout>
+                }
+            />
+        </Route>
+    )
+);
+
 /*
     const router = createBrowserRouter(
     createRoutesFromElements(
@@ -84,7 +110,10 @@ const router = createBrowserRouter(
 
 ReactDOM.createRoot(document.getElementById("root")).render(
     <React.StrictMode>
+        <div>yoyo honey singh</div>
         <RouterProvider router={router} />
+        <div>yoyo honey singh</div>
+        <RouterProvider router={router2} />
     </React.StrictMode>
 );
 
